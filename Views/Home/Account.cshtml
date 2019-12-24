@@ -1,0 +1,66 @@
+@model Transaction
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bank Accounts</title>
+    <link rel="stylesheet" href="~/css/account.css"/>
+</head>
+<body>
+    <h1>Welcome, @ViewBag.User.FirstName</h1>
+    <div class="text-right">
+        <a href="/logout">Logout</a>
+    </div>
+    <br>
+    <div class="text-right">
+        @{
+            Decimal count = 0.00M;
+        }
+        @foreach(var transaction in ViewBag.Transaction)
+        {
+            count += transaction.Amount;
+        }
+        <label for="balance">Current Balance:</label>
+        <input type="text" value = "$@count" id="balance">
+    </div>
+    <form asp-action="Add" asp-controller="Home" asp-route-UserId="@ViewBag.User.UserId" method="post">
+        <span asp-validation-for="Amount" class="text-danger"></span>
+        <div class="form-inline col-md-9">
+            <label asp-for="Amount">Deposit/Withdrawal</label>
+            <select class="form-control" id="Amount" asp-for="Amount">
+                <option value="100.00">$100.00</option>
+                <option value="-100.00">-$100.00</option>
+                <option value="200.00">$200.00</option>
+                <option value="-200.00">-$200.00</option>
+                <option value="300.00">$300.00</option>
+                <option value="-300.00">-$300.00</option>
+                <option value="400.00">$400.00</option>
+                <option value="-400.00">-$400.00</option>
+                <option value="500.00">$500.00</option>
+                <option value="-500.00">-$500.00</option>
+            </select>
+            <button type="submit" id="button" class="btn btn-primary mb-1">Submit</button>
+        </div>
+    </form>
+    <br>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Amount</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var UserTransaction in ViewBag.Transaction)
+            {
+            <tr>
+                <th scope="row">$@UserTransaction.Amount</th>
+                <td>@UserTransaction.CreatedAt.ToString("MMMM dd yyyy")</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

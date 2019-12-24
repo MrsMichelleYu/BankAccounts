@@ -1,0 +1,69 @@
+﻿@model User
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bank Accounts</title>
+</head>
+<body>
+    <div class="text-center">
+        <h1>Register</h1>
+    </div>
+    <form asp-action="Register" asp-controller="Home" method="post">
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+        <div class="form-group row col-md-6">
+            <label asp-for="FirstName">First Name</label>
+            <input type="text" class="form-control" id="FirstName" asp-for="FirstName">
+        </div>
+        <span asp-validation-for="LastName" class="text-danger"></span>
+        <div class="form-group row col-md-6">
+            <label asp-for="LastName">Last Name</label>
+            <input type="text" class="form-control" id="LastName" asp-for="LastName">
+        </div>
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <div class="form-group row col-md-6">
+            <label asp-for="Email">Email</label>
+            <input type="text" class="form-control" id="Email" asp-for="Email">
+        </div>
+        <span asp-validation-for="Password" class="text-danger"></span>
+        <div class="form-group row col-md-6">
+            <label asp-for="Password">Password</label>
+            <input type="text" class="form-control" id="Password" asp-for="Password">
+        </div>
+        <span asp-validation-for="Confirm" class="text-danger"></span>
+        <div class="form-group row col-md-6">
+            <label asp-for="Confirm">Confirm Password</label>
+            <input type="text" class="form-control" id="Confirm" asp-for="Confirm">
+        </div>
+        <div class="form-group row col-md-6">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+    <div class="text-center">
+        <a href="/login">Already Registered?</a>
+    </div>
+</body>
+</html>
+
+<!-- @{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div> -->
+
+
+
+
+<!-- @{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div> -->
